@@ -35,14 +35,14 @@ def preprocess_and_save_data(dataset_path, token_lookup, create_lookup_tables):
 
     vocab_to_int, int_to_vocab = create_lookup_tables(text + list(SPECIAL_WORDS.values()))
     int_text = [vocab_to_int[word] for word in text]
-    pickle.dump((int_text, vocab_to_int, int_to_vocab, token_dict), open('preprocess.p', 'wb'))
+    pickle.dump((int_text, vocab_to_int, int_to_vocab, token_dict), open('data/input_pre-processed/preprocess.p', 'wb'))
 
 
 def load_preprocess():
     """
     Load the Preprocessed Training data and return them in batches of <batch_size> or less
     """
-    return pickle.load(open('preprocess.p', mode='rb'))
+    return pickle.load(open('data/input_pre-processed/preprocess.p', mode='rb'))
 
 
 def save_model(filename, decoder):
